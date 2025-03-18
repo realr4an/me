@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duncan Scholle - GitHub Profil</title>
+    <!-- Google Fonts für moderne Typografie -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Standard Dark Mode */
+        :root {
+            --bg-color: #0f1626;
+            /* Dunkles Blau als Basisfarbe */
+            --accent-color: #E50914;
+            /* Kräftiges Rot als roter Faden */
+            --text-color: #e0e0e0;
+            /* Helles Grau für Text */
+            --header-bg: rgba(15, 22, 38, 0.9);
+            /* Transparenter Header */
+        }
+
+        /* Light Mode Overrides */
+        .light-mode {
+            --bg-color: #ffffff;
+            /* Weißer Hintergrund */
+            --text-color: #333333;
+            /* Dunkler Text */
+            --header-bg: rgba(255, 255, 255, 0.9);
+            /* Heller Header */
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--header-bg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            z-index: 1000;
+        }
+
+        header nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .language-switch button,
+        .mode-switch button {
+            background: none;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            padding: 0.3rem 0.6rem;
+            margin-left: 0.5rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .language-switch button:hover,
+        .mode-switch button:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        main {
+            padding-top: 80px;
+            /* Platz für den fixierten Header */
+            margin-left: 70px;
+            /* Abstand, damit der Inhalt nicht an der vertikalen Navigation klebt */
+        }
+
+        section {
+            padding: 4rem 2rem;
+            border-bottom: 1px solid #333;
+            position: relative;
+        }
+
+        section h1,
+        section h2 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        /* Vertikale Navigationsanzeige (linke Seite) */
+        .vertical-nav {
+            position: fixed;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 70%;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .vertical-nav .nav-line {
+            position: absolute;
+            width: 40px;
+            height: 100%;
+        }
+
+        .vertical-nav .nav-line path {
+            stroke: var(--accent-color);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .vertical-nav .nav-markers {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .vertical-nav .nav-marker {
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            background: var(--bg-color);
+            /* passt sich dem Hintergrund an */
+            transition: background 0.3s;
+        }
+
+        .vertical-nav .nav-marker.active {
+            background: var(--accent-color);
+        }
+
+        /* About Section – Zwei Sprachvarianten */
+        .about-content {
+            display: none;
+        }
+
+        .about-content.active {
+            display: block;
+        }
+
+        /* Kenntnisse / Skills Section */
+        /* Überschrift wird dynamisch über switchLanguage gesetzt */
+        #skills-header {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        /* Container für Englisch und Deutsch */
+        .skills-content {
+            display: none;
+        }
+
+        .skills-content.active {
+            display: block;
+        }
+
+        .skill-category {
+            margin-bottom: 2rem;
+        }
+
+        .skill-category h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .skill-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-name {
+            display: inline-block;
+            width: 320px;
+        }
+
+        .progress-bar {
+            display: inline-block;
+            background: #333;
+            width: 200px;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            vertical-align: middle;
+        }
+
+        .progress {
+            background: var(--accent-color);
+            height: 100%;
+            width: 0;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .projects-content {
+            display: none;
+        }
+
+        .projects-content.active {
+            display: block;
+        }
+
+        /* Module Section Styles */
+        #modules ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #modules li {
+            padding: 0.3rem 0;
+            border-bottom: 1px solid #333;
+        }
+
+        /* Projekt-Links anpassen für bessere Lesbarkeit */
+        a.project-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        a.project-link:hover {
+            color: var(--accent-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #111;
+        }
+
+        /* Timeline Styles for Experience */
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -23px;
+            width: 20px;
+            height: 20px;
+            background: var(--bg-color);
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            top: 0;
+        }
+
+        .experience-content {
+            display: none;
+        }
+
+        .experience-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div>
+            <nav>
+                <a href="mailto:duncanscholle@outlook.com">duncanscholle@outlook.com</a>
+                <a href="Lebenslauf.pdf" target="_blank">CV</a>
+                <a href="https://www.linkedin.com/in/duncanscholle" target="_blank">LinkedIn</a>
+            </nav>
+        </div>
+        <div>
+            <span class="language-switch">
+                <button onclick="switchLanguage('de')">DE</button>
+                <button onclick="switchLanguage('en')">EN</button>
+            </span>
+            <span class="mode-switch">
+                <button onclick="toggleMode()">Toggle Mode</button>
+            </span>
+        </div>
+    </header>
+
+    <!-- Vertikale Navigationsanzeige -->
+    <div class="vertical-nav">
+        <svg class="nav-line" viewBox="0 0 40 1000" preserveAspectRatio="none">
+            <!-- Geschwungene (wellig) Linie -->
+            <path
+                d="M20,0 C10,50 30,150 20,200 C10,250 30,350 20,400 C10,450 30,550 20,600 C10,650 30,750 20,800 C10,850 30,950 20,1000" />
+        </svg>
+        <div class="nav-markers">
+            <div class="nav-marker" data-target="about"></div>
+            <div class="nav-marker" data-target="skills"></div>
+            <div class="nav-marker" data-target="experience"></div>
+            <div class="nav-marker" data-target="modules"></div>
+            <div class="nav-marker" data-target="projects"></div>
+        </div>
+    </div>
+
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <!-- Englische Version -->
+            <div id="about-english" class="about-content active">
+                <h1>Duncan Scholle</h1>
+                <p>Student Research Assistant at FH Dortmund for Project Work in Data Science</p>
+                <p>Data Science and AI Enthusiast, Gaming, Finance</p>
+            </div>
+            <!-- Deutsche Version -->
+            <div id="about-german" class="about-content">
+                <h1>Duncan Scholle</h1>
+                <p>Studentische Hilfskraft FH Dortmund für Projektarbeiten im Bereich Data Science</p>
+                <p>Data Science und AI Enthusiast, Gaming, Finance</p>
+            </div>
+        </section>
+
+        <!-- Kenntnisse / Skills Section -->
+        <section id="skills">
+            <h2 id="skills-header">Skills</h2>
+            <!-- Englische Version -->
+            <div id="skills-english" class="skills-content active">
+                <!-- Data Science & Machine Learning -->
+                <div class="skill-category">
+                    <h3>Data Science & Machine Learning</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Python (numpy, pandas, matplotlib, seaborn, scikit-learn,
+                            TensorFlow)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">R (Data Visualization, Statistical Analysis)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Applied Machine Learning & Deep Learning</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Data Visualization (matplotlib, seaborn, plotly, Tableau)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Databases & Backend Development -->
+                <div class="skill-category">
+                    <h3>Databases & Backend Development</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">SQL (MySQL, PostgreSQL, Oracle SQL Developer, HANA DB)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">NoSQL (Cassandra)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Data Science Databases (Data Warehousing, Data Modeling)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Database Management & Administration</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web & Frontend Development -->
+                <div class="skill-category">
+                    <h3>Web & Frontend Development</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">HTML, CSS, JavaScript</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">React.js (Frontend Framework)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Web Technologies (REST APIs, JSON, Webserver Configuration &
+                            Hosting)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Software Engineering & Development -->
+                <div class="skill-category">
+                    <h3>Software Engineering & Development</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Java, Python</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Software Development (OOP, SOLID Principles)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Algorithms & Data Structures</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Git & Version Control</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Human-Computer Interaction & UI/UX</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mathematics & Statistics -->
+                <div class="skill-category">
+                    <h3>Mathematics & Statistics</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Statistics & Probability Theory</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Linear Algebra, Calculus</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Mathematics for Computer Science & Data Science</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IT & System Architecture -->
+                <div class="skill-category">
+                    <h3>IT & System Architecture</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Computer Architecture and Operating Systems (Linux, Windows,
+                            MacOS)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Communication & Computer Networks (TCP/IP, Network Protocols)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Mobile Security & Information Security</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Theoretical Computer Science & Logic</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business & Management -->
+                <div class="skill-category">
+                    <h3>Business & Management</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Business Administration (Basics)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Information & Business Performance Management</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Computers and Society, IT Law</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deutsche Version -->
+            <div id="skills-german" class="skills-content">
+                <!-- Data Science & Machine Learning -->
+                <div class="skill-category">
+                    <h3>Data Science & Machine Learning</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Python (numpy, pandas, matplotlib, seaborn, scikit-learn,
+                            TensorFlow)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">R (Data Visualization, Statistische Analysen)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Angewandtes Machine Learning & Deep Learning</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Datenvisualisierung (matplotlib, seaborn, plotly, Tableau)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Datenbanken & Backend Development -->
+                <div class="skill-category">
+                    <h3>Datenbanken & Backend Development</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">SQL (MySQL, PostgreSQL, Oracle SQL Developer, HANA DB)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">NoSQL (Cassandra)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Data Science Datenbanken (Data Warehousing, Data Modeling)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Datenbankmanagement & Administration</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Web & Frontend Development -->
+                <div class="skill-category">
+                    <h3>Web & Frontend Development</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">HTML, CSS, JavaScript</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">React.js (Frontend Framework)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Web-Technologien (REST APIs, JSON, Webserver-Konfiguration &
+                            Hosting)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Software Engineering & Development -->
+                <div class="skill-category">
+                    <h3>Software Engineering & Development</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Java, Python</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Softwareentwicklung (OOP, SOLID-Prinzipien)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Algorithmen & Datenstrukturen</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Git & Versionskontrolle</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Human-Computer Interaction & UI/UX</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mathematik & Statistik -->
+                <div class="skill-category">
+                    <h3>Mathematik & Statistik</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Statistik & Wahrscheinlichkeitsrechnung</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Lineare Algebra, Analysis</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Mathematik für Informatik & Data Science</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IT & Systemarchitektur -->
+                <div class="skill-category">
+                    <h3>IT & Systemarchitektur</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Rechnerstrukturen und Betriebssysteme (Linux, Windows, MacOS)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Kommunikation & Rechnernetze (TCP/IP, Netzwerkprotokolle)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Mobile Security & Informationssicherheit</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Theoretische Informatik & Logik</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business & Management -->
+                <div class="skill-category">
+                    <h3>Business & Management</h3>
+                    <div class="skill-item">
+                        <span class="skill-name">Betriebswirtschaftslehre (BWL Grundlagen)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Informations- und Business Performance Management</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Informatik und Gesellschaft, IT-Recht</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section (Timeline) -->
+        <section id="experience">
+            <!-- Englische Version -->
+            <div id="experience-english" class="experience-content active">
+                <h2 id="experience-header">Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Ludwig-Uhland-Realschule / Lünen, Horstmar</h3>
+                        <p>08.2018 – 08.2021</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Hellweg-Berufskolleg Unna / Unna</h3>
+                        <p>10.2021 – 10.2022</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>TU Dortmund / Dortmund</h3>
+                        <p>10.2022 – Present</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>FH Dortmund / Dortmund</h3>
+                        <p>Current</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Deutsche Version -->
+            <div id="experience-german" class="experience-content">
+                <h2 id="experience-header">Erfahrung</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Ludwig-Uhland-Realschule / Lünen, Horstmar</h3>
+                        <p>08.2018 – 08.2021</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>Hellweg-Berufskolleg Unna / Unna</h3>
+                        <p>10.2021 – 10.2022</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>TU Dortmund / Dortmund</h3>
+                        <p>10.2022 – Jetzt</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>FH Dortmund / Dortmund</h3>
+                        <p>Aktuell</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module Section -->
+        <section id="modules">
+            <h2 id="modules-header">Modules</h2>
+            <!-- Englische Modulliste -->
+            <div id="modules-english">
+                <ul>
+                    <li>Introduction to Programming</li>
+                    <li>Algorithms and Data Structures</li>
+                    <li>Programming Course 1</li>
+                    <li>Programming Course 2 DS</li>
+                    <li>Computer Architecture and Operating Systems 1</li>
+                    <li>Computer Architecture and Operating Systems 2</li>
+                    <li>Software Engineering 1</li>
+                    <li>Database Management Systems 1</li>
+                    <li>Mathematics for IT Specialists 1</li>
+                    <li>Mathematics for IT Specialists 2</li>
+                    <li>Mathematics for IT Specialists 3</li>
+                    <li>Mathematics for IT Specialists 4 Data Science</li>
+                    <li>Theoretical Computer Science</li>
+                    <li>Human Computer Interaction</li>
+                    <li>Data Visualization</li>
+                    <li>Artificial Intelligence</li>
+                    <li>Applied Machine Learning</li>
+                    <li>Business Administration</li>
+                    <li>Technical English</li>
+                    <li>Study and Working Techniques</li>
+                    <li>Mentoring</li>
+                    <li>Software Engineering 2</li>
+                    <li>Web Technologies</li>
+                    <li>Communication and Computer Networks</li>
+                    <li>Data Science Databases</li>
+                    <li>Seminar - Content (Network Security)</li>
+                    <li>Computers and Society</li>
+                    <li>IT Law</li>
+                    <li>Mobile Security (Advanced Information Security)</li>
+                    <li>Information and Business Performance Management</li>
+                </ul>
+            </div>
+            <!-- Deutsche Modulliste -->
+            <div id="modules-german" style="display: none;">
+                <ul>
+                    <li>Einführung in die Programmierung</li>
+                    <li>Algorithmen und Datenstrukturen</li>
+                    <li>Programmierkurs 1</li>
+                    <li>Programmierkurs 2 DS</li>
+                    <li>Rechnerstrukturen und Betriebssysteme 1</li>
+                    <li>Rechnerstrukturen und Betriebssysteme 2</li>
+                    <li>Softwaretechnik 1</li>
+                    <li>Datenbanken 1</li>
+                    <li>Mathematik für Informatik 1</li>
+                    <li>Mathematik für Informatik 2</li>
+                    <li>Mathematik für Informatik 3</li>
+                    <li>Mathematik für Informatik 4 DS</li>
+                    <li>Theoretische Informatik</li>
+                    <li>Mensch-Computer-Interaktion</li>
+                    <li>Datenvisualisierung</li>
+                    <li>Künstliche Intelligenz</li>
+                    <li>Angewandtes Maschinelles Lernen</li>
+                    <li>Betriebswirtschaftslehre (BWL)</li>
+                    <li>Technisches Englisch</li>
+                    <li>Lern- und Arbeitstechniken</li>
+                    <li>Mentoring</li>
+                    <li>Softwaretechnik 2</li>
+                    <li>Web-Technologien</li>
+                    <li>Kommunikations- und Rechnernetze</li>
+                    <li>Data Science Datenbanken</li>
+                    <li>Seminar - Inhalt (Netzwerksicherheit)</li>
+                    <li>Informatik und Gesellschaft</li>
+                    <li>IT-Recht</li>
+                    <li>Fortgeschrittene Informationssicherheit</li>
+                    <li>Informations- und Business Performance Management</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projekte Section -->
+        <section id="projects">
+            <h2 id="projects-header">Projects</h2>
+            <!-- Englische Version -->
+            <div id="projects-english" class="projects-content active">
+                <ul>
+                    <li>
+                        <a class="project-link" href="https://github.com/realr4an/SecureTextEditor" target="_blank">
+                            SecureTextEditor
+                        </a>
+                        – A secure text editor with encryption features.
+                    </li>
+                    <li>
+                        <a class="project-link" href="https://github.com/realr4an/LeagueOfLegendsMinimapTracker"
+                            target="_blank">
+                            LeagueOfLegendsMinimapTracker
+                        </a>
+                        – Real-time minimap analysis for League of Legends.
+                    </li>
+                </ul>
+            </div>
+            <!-- Deutsche Version -->
+            <div id="projects-german" class="projects-content">
+                <ul>
+                    <li>
+                        <a class="project-link" href="https://github.com/realr4an/SecureTextEditor" target="_blank">
+                            SecureTextEditor
+                        </a>
+                        – Ein sicherer Texteditor mit Verschlüsselungsfunktionen.
+                    </li>
+                    <li>
+                        <a class="project-link" href="https://github.com/realr4an/LeagueOfLegendsMinimapTracker"
+                            target="_blank">
+                            LeagueOfLegendsMinimapTracker
+                        </a>
+                        – Echtzeit-Minimap-Analyse für League of Legends.
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Duncan Scholle</p>
+    </footer>
+
+    <script>
+        // Sprachumschaltung für About, Module und Skills
+        function switchLanguage(lang) {
+            if (lang === 'de') {
+                // About
+                document.getElementById('about-english').classList.remove('active');
+                document.getElementById('about-german').classList.add('active');
+                // Experience
+                document.getElementById('experience-header').textContent = 'Erfahrung';
+                document.getElementById('experience-english').classList.remove('active');
+                document.getElementById('experience-german').classList.add('active');
+                // Module
+                document.getElementById('modules-header').textContent = 'Module';
+                document.getElementById('modules-english').style.display = 'none';
+                document.getElementById('modules-german').style.display = 'block';
+                // Skills
+                document.getElementById('skills-header').textContent = 'Kenntnisse';
+                document.getElementById('skills-english').classList.remove('active');
+                document.getElementById('skills-german').classList.add('active');
+                // Projects
+                document.getElementById('projects-header').textContent = 'Projekte';
+                document.getElementById('projects-english').classList.remove('active');
+                document.getElementById('projects-german').classList.add('active');
+            } else {
+                // About
+                document.getElementById('about-german').classList.remove('active');
+                document.getElementById('about-english').classList.add('active');
+                // Experience
+                document.getElementById('experience-header').textContent = 'Experience';
+                document.getElementById('experience-german').classList.remove('active');
+                document.getElementById('experience-english').classList.add('active');
+                // Module
+                document.getElementById('modules-header').textContent = 'Modules';
+                document.getElementById('modules-english').style.display = 'block';
+                document.getElementById('modules-german').style.display = 'none';
+                // Skills
+                document.getElementById('skills-header').textContent = 'Skills';
+                document.getElementById('skills-english').classList.add('active');
+                document.getElementById('skills-german').classList.remove('active');
+                // Projects
+                document.getElementById('projects-header').textContent = 'Projects';
+                document.getElementById('projects-english').classList.add('active');
+                document.getElementById('projects-german').classList.remove('active');
+            }
+        }
+
+        // Toggle zwischen Dark Mode und Light Mode
+        function toggleMode() {
+            document.body.classList.toggle('light-mode');
+        }
+
+        // Automatischer Mode-Wechsel basierend auf Systemeinstellungen
+        window.addEventListener('load', () => {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                document.body.classList.add('light-mode');
+            }
+            updateActiveMarker();
+        });
+
+        // Aktualisiert den aktiven Marker in der vertikalen Navigation basierend auf der Scrollposition
+        function updateActiveMarker() {
+            const sections = ['about', 'skills', 'experience', 'modules', 'projects'];
+            let activeSection = sections[0];
+            let minDistance = Infinity;
+            const viewportMid = window.innerHeight / 2; // Bildschirmmitte
+
+            sections.forEach(id => {
+                const section = document.getElementById(id);
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    // Berechne die Mitte des Abschnitts
+                    const sectionMid = rect.top + rect.height / 2;
+                    const distance = Math.abs(sectionMid - viewportMid);
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        activeSection = id;
+                    }
+                }
+            });
+
+            const markers = document.querySelectorAll('.nav-marker');
+            markers.forEach(marker => {
+                marker.classList.remove('active');
+                if (marker.getAttribute('data-target') === activeSection) {
+                    marker.classList.add('active');
+                }
+            });
+        }
+
+
+        window.addEventListener('scroll', updateActiveMarker);
+    </script>
+</body>
+
+</html>
