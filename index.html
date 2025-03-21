@@ -347,6 +347,37 @@
             flex: 1;
             min-width: 300px;
         }
+
+        .typing {
+            color: var(--accent-color);
+            white-space: nowrap;
+            border-right: 2px solid var(--accent-color);
+            animation: blink-caret 0.75s step-end infinite;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: var(--accent-color);
+            }
+        }
+
+        .faded-image {
+            display: block;
+            top: 20px;
+            right: 20px;
+            /* Set the image to the left */
+            width: 200px;
+            opacity: 0.15;
+            margin-bottom: -65px;
+        }
     </style>
 </head>
 
@@ -392,15 +423,15 @@
             <!-- Englische Version -->
             <div id="about-english" class="about-content active">
                 <h1>Duncan Scholle</h1>
-                <p>Student Research Assistant at FH Dortmund for Project Work in Data Science</p>
-                <p>Data Science and AI Enthusiast, Gaming, Finance</p>
+                <p id="dynamic-english">I'm <span id="english-rotate" class="typing"></span></p>
             </div>
+
             <!-- Deutsche Version -->
             <div id="about-german" class="about-content">
                 <h1>Duncan Scholle</h1>
-                <p>Studentische Hilfskraft FH Dortmund für Projektarbeiten im Bereich Data Science</p>
-                <p>Data Science und AI Enthusiast, Gaming, Finance</p>
+                <p id="dynamic-german">Ich bin <span id="german-rotate" class="typing"></span></p>
             </div>
+            <div><img src="me.png" alt="Profile Photo" class="faded-image"></div>
         </section>
 
         <!-- Kenntnisse / Skills Section -->
@@ -852,85 +883,6 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2 id="skills-header">Skills</h2>
-            <!-- Englische Version -->
-            <div id="skills-english" class="skills-content active">
-                <!-- Beispiel-Kategorie -->
-                <div class="skill-category">
-                    <h3>Data Science & Machine Learning</h3>
-                    <div class="skill-item">
-                        <span class="skill-percent">90%</span>
-                        <span class="skill-name">Python (numpy, pandas, matplotlib, seaborn, scikit-learn,
-                            TensorFlow)</span>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-percent">80%</span>
-                        <span class="skill-name">R (Data Visualization, Statistical Analysis)</span>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-percent">85%</span>
-                        <span class="skill-name">Applied Machine Learning & Deep Learning</span>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-percent">80%</span>
-                        <span class="skill-name">Data Visualization (matplotlib, seaborn, plotly, Tableau)</span>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Weitere Kategorien (Englisch) können hier ergänzt werden -->
-            </div>
-            <!-- Deutsche Version -->
-            <div id="skills-german" class="skills-content">
-                <!-- Beispiel-Kategorie -->
-                <div class="skill-category">
-                    <h3>Data Science & Machine Learning</h3>
-                    <div class="skill-item">
-                        <span class="skill-percent">90%</span>
-                        <span class="skill-name">Python (numpy, pandas, matplotlib, seaborn, scikit-learn,
-                            TensorFlow)</span>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-percent">80%</span>
-                        <span class="skill-name">R (Data Visualization, Statistische Analysen)</span>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-percent">85%</span>
-                        <span class="skill-name">Angewandtes Machine Learning & Deep Learning</span>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span class="skill-percent">80%</span>
-                        <span class="skill-name">Datenvisualisierung (matplotlib, seaborn, plotly, Tableau)</span>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Weitere Kategorien (Deutsch) können hier ergänzt werden -->
-            </div>
-        </section>
-
         <!-- Experience Section mit zwei Timelines -->
         <section id="experience">
             <!-- Englische Version -->
@@ -1183,6 +1135,96 @@
     </footer>
 
     <script>
+        // Toggle zwischen Dark Mode und Light Mode
+        function toggleMode() {
+            document.body.classList.toggle('light-mode');
+        }
+
+        // Automatischer Mode-Wechsel basierend auf Systemeinstellungen
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                document.body.classList.add('light-mode');
+            }
+            updateActiveMarker();
+        });
+
+        const englishPhrases = [
+            "a Data Science student",
+            "passionate about AI & machine learning",
+            "skilled in Python, Java & SQL",
+            "curious about deep learning",
+            "building intelligent, secure apps",
+            "exploring backend and databases",
+            "a problem-solver with a tech mindset",
+            "focused on clean and scalable code",
+            "always learning and evolving",
+            "thinking in algorithms & models"
+        ];
+
+
+        const germanPhrases = [
+            "Data-Science-Student",
+            "begeistert von KI & Machine Learning",
+            "versiert in Python, Java und SQL",
+            "interessiert an Deep Learning",
+            "entwickle sichere und intelligente Anwendungen",
+            "Fokus auf Backend und Datenbanken",
+            "Problemlöser mit Technik-Verständnis",
+            "denke in Algorithmen und Modellen",
+            "strebe nach sauberem, wartbarem Code",
+            "ständig am Lernen und Wachsen"
+        ];
+
+
+        let enIndex = 0;
+        let deIndex = 0;
+
+        function typeText(element, text, callback) {
+            element.textContent = '';
+            let i = 0;
+            const typingInterval = setInterval(() => {
+                element.textContent += text.charAt(i);
+                i++;
+                if (i === text.length) {
+                    clearInterval(typingInterval);
+                    if (callback) setTimeout(callback, 4000); // 2s warten, dann nächster Text
+                }
+            }, 60); // Geschwindigkeit pro Buchstabe
+        }
+
+        function typeTextFixed(prefix, element, text, callback) {
+            let i = 0;
+            element.textContent = '';
+            const typingInterval = setInterval(() => {
+                element.textContent = text.slice(0, i + 1);
+                i++;
+                if (i === text.length) {
+                    clearInterval(typingInterval);
+                    if (callback) setTimeout(callback, 4000);
+                }
+            }, 60);
+        }
+
+        function startTypingCycle(lang) {
+            const isEnglish = lang === 'en';
+            const phrases = isEnglish ? englishPhrases : germanPhrases;
+            const element = document.getElementById(isEnglish ? 'english-rotate' : 'german-rotate');
+            let index = 0;
+
+            function loop() {
+                typeTextFixed('', element, phrases[index], () => {
+                    index = (index + 1) % phrases.length;
+                    loop();
+                });
+            }
+
+            loop();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            startTypingCycle('en');
+        });
+
         // Sprachumschaltung für About, Module und Skills
         function switchLanguage(lang) {
             if (lang === 'de') {
@@ -1205,6 +1247,7 @@
                 document.getElementById('projects-header').textContent = 'Projekte';
                 document.getElementById('projects-english').classList.remove('active');
                 document.getElementById('projects-german').classList.add('active');
+                startTypingCycle('de');
             } else {
                 // About
                 document.getElementById('about-german').classList.remove('active');
@@ -1225,21 +1268,9 @@
                 document.getElementById('projects-header').textContent = 'Projects';
                 document.getElementById('projects-english').classList.add('active');
                 document.getElementById('projects-german').classList.remove('active');
+                startTypingCycle('en');
             }
         }
-
-        // Toggle zwischen Dark Mode und Light Mode
-        function toggleMode() {
-            document.body.classList.toggle('light-mode');
-        }
-
-        // Automatischer Mode-Wechsel basierend auf Systemeinstellungen
-        window.addEventListener('load', () => {
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-                document.body.classList.add('light-mode');
-            }
-            updateActiveMarker();
-        });
 
         function toggleModules(language) {
             if (language === 'de') {
