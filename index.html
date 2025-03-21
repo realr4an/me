@@ -17,14 +17,14 @@
 
         /* Standard Dark Mode */
         :root {
-            --bg-color: #0f1626;
-            /* Dunkles Blau als Basisfarbe */
-            --accent-color: #E50914;
-            /* Kräftiges Rot als roter Faden */
-            --text-color: #e0e0e0;
+            --bg-color: #0A192F;
+            /* Dunkles Marineblau als Basisfarbe */
+            --accent-color: #00BCD4;
+            /* Kräftiges Türkis als Akzentfarbe */
+            --text-color: #CCD6F6;
             /* Helles Grau für Text */
-            --header-bg: rgba(15, 22, 38, 0.9);
-            /* Transparenter Header */
+            --header-bg: rgba(10, 25, 47, 0.9);
+            /* Transparenter Header, basierend auf dem dunklen Blau */
         }
 
         /* Light Mode Overrides */
@@ -35,7 +35,10 @@
             /* Dunkler Text */
             --header-bg: rgba(255, 255, 255, 0.9);
             /* Heller Header */
+            --accent-color: #00BCD4;
+            /* Akzentfarbe bleibt auch im Light Mode Türkis */
         }
+
 
         body {
             font-family: 'Roboto', sans-serif;
@@ -198,6 +201,15 @@
             width: 320px;
         }
 
+        /* Neuer Stil für Prozentwerte */
+        .skill-percent {
+            display: inline-block;
+            width: 40px;
+            text-align: right;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
         .progress-bar {
             display: inline-block;
             background: #333;
@@ -223,7 +235,7 @@
             display: block;
         }
 
-        /* Module Section Styles */
+        /* Module Section – Toggle für weitere Module */
         #modules ul {
             list-style-type: none;
             padding: 0;
@@ -232,6 +244,35 @@
         #modules li {
             padding: 0.3rem 0;
             border-bottom: 1px solid #333;
+        }
+
+        /* Container für zusätzliche Module, versteckt und mit Fade */
+        .modules-extra {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+        }
+
+        .modules-extra.expanded {
+            max-height: 1000px;
+            /* ausreichend groß */
+            opacity: 1;
+        }
+
+        .modules-toggle {
+            background: none;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            padding: 0.3rem 0.6rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .modules-toggle:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
         }
 
         /* Projekt-Links anpassen für bessere Lesbarkeit */
@@ -293,6 +334,18 @@
 
         .experience-content.active {
             display: block;
+        }
+
+        /* Neue Container für zwei Timelines in Experience */
+        .experience-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .experience-column {
+            flex: 1;
+            min-width: 300px;
         }
     </style>
 </head>
@@ -362,26 +415,30 @@
                         <span class="skill-name">Python (numpy, pandas, matplotlib, seaborn, scikit-learn,
                             TensorFlow)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 90%;"></div>
+                            <div class="progress" style="width: 95%;"></div>
                         </div>
+                        <span class="skill-percent">95%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">R (Data Visualization, Statistical Analysis)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 80%;"></div>
+                            <div class="progress" style="width: 65%;"></div>
                         </div>
+                        <span class="skill-percent">65%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Applied Machine Learning & Deep Learning</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 85%;"></div>
+                            <div class="progress" style="width: 75%;"></div>
                         </div>
+                        <span class="skill-percent">75%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Data Visualization (matplotlib, seaborn, plotly, Tableau)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 80%;"></div>
+                            <div class="progress" style="width: 90%;"></div>
                         </div>
+                        <span class="skill-percent">90%</span>
                     </div>
                 </div>
 
@@ -393,24 +450,28 @@
                         <div class="progress-bar">
                             <div class="progress" style="width: 85%;"></div>
                         </div>
+                        <span class="skill-percent">85%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">NoSQL (Cassandra)</span>
                         <div class="progress-bar">
                             <div class="progress" style="width: 70%;"></div>
                         </div>
+                        <span class="skill-percent">70%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Data Science Databases (Data Warehousing, Data Modeling)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 75%;"></div>
+                            <div class="progress" style="width: 90%;"></div>
                         </div>
+                        <span class="skill-percent">90%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Database Management & Administration</span>
                         <div class="progress-bar">
                             <div class="progress" style="width: 80%;"></div>
                         </div>
+                        <span class="skill-percent">80%</span>
                     </div>
                 </div>
 
@@ -422,19 +483,22 @@
                         <div class="progress-bar">
                             <div class="progress" style="width: 90%;"></div>
                         </div>
+                        <span class="skill-percent">90%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">React.js (Frontend Framework)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 80%;"></div>
+                            <div class="progress" style="width: 85%;"></div>
                         </div>
+                        <span class="skill-percent">85%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Web Technologies (REST APIs, JSON, Webserver Configuration &
                             Hosting)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 75%;"></div>
+                            <div class="progress" style="width: 80%;"></div>
                         </div>
+                        <span class="skill-percent">80%</span>
                     </div>
                 </div>
 
@@ -442,34 +506,39 @@
                 <div class="skill-category">
                     <h3>Software Engineering & Development</h3>
                     <div class="skill-item">
-                        <span class="skill-name">Java, Python</span>
+                        <span class="skill-name">Java, Python, C, C#, C++</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 85%;"></div>
+                            <div class="progress" style="width: 98%;"></div>
                         </div>
+                        <span class="skill-percent">98%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Software Development (OOP, SOLID Principles)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 85%;"></div>
+                            <div class="progress" style="width: 90%;"></div>
                         </div>
+                        <span class="skill-percent">90%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Algorithms & Data Structures</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 80%;"></div>
+                            <div class="progress" style="width: 89%;"></div>
                         </div>
+                        <span class="skill-percent">89%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Git & Version Control</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 90%;"></div>
+                            <div class="progress" style="width: 95%;"></div>
                         </div>
+                        <span class="skill-percent">95%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Human-Computer Interaction & UI/UX</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 75%;"></div>
+                            <div class="progress" style="width: 80%;"></div>
                         </div>
+                        <span class="skill-percent">80%</span>
                     </div>
                 </div>
 
@@ -481,18 +550,21 @@
                         <div class="progress-bar">
                             <div class="progress" style="width: 80%;"></div>
                         </div>
+                        <span class="skill-percent">80%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Linear Algebra, Calculus</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 75%;"></div>
+                            <div class="progress" style="width: 80%;"></div>
                         </div>
+                        <span class="skill-percent">80%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Mathematics for Computer Science & Data Science</span>
                         <div class="progress-bar">
                             <div class="progress" style="width: 85%;"></div>
                         </div>
+                        <span class="skill-percent">85%</span>
                     </div>
                 </div>
 
@@ -503,26 +575,30 @@
                         <span class="skill-name">Computer Architecture and Operating Systems (Linux, Windows,
                             MacOS)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 80%;"></div>
+                            <div class="progress" style="width: 75%;"></div>
                         </div>
+                        <span class="skill-percent">75%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Communication & Computer Networks (TCP/IP, Network Protocols)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 75%;"></div>
+                            <div class="progress" style="width: 85%;"></div>
                         </div>
+                        <span class="skill-percent">85%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Mobile Security & Information Security</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 70%;"></div>
+                            <div class="progress" style="width: 80%;"></div>
                         </div>
+                        <span class="skill-percent">80%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Theoretical Computer Science & Logic</span>
                         <div class="progress-bar">
                             <div class="progress" style="width: 65%;"></div>
                         </div>
+                        <span class="skill-percent">65%</span>
                     </div>
                 </div>
 
@@ -532,20 +608,23 @@
                     <div class="skill-item">
                         <span class="skill-name">Business Administration (Basics)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 70%;"></div>
+                            <div class="progress" style="width: 95%;"></div>
                         </div>
+                        <span class="skill-percent">95%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Information & Business Performance Management</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 75%;"></div>
+                            <div class="progress" style="width: 96%;"></div>
                         </div>
+                        <span class="skill-percent">96%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Computers and Society, IT Law</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 70%;"></div>
+                            <div class="progress" style="width: 80%;"></div>
                         </div>
+                        <span class="skill-percent">80%</span>
                     </div>
                 </div>
             </div>
@@ -559,26 +638,30 @@
                         <span class="skill-name">Python (numpy, pandas, matplotlib, seaborn, scikit-learn,
                             TensorFlow)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 90%;"></div>
+                            <div class="progress" style="width: 95%;"></div>
                         </div>
+                        <span class="skill-percent">95%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">R (Data Visualization, Statistische Analysen)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 80%;"></div>
+                            <div class="progress" style="width: 65%;"></div>
                         </div>
+                        <span class="skill-percent">65%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Angewandtes Machine Learning & Deep Learning</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 85%;"></div>
+                            <div class="progress" style="width: 75%;"></div>
                         </div>
+                        <span class="skill-percent">75%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Datenvisualisierung (matplotlib, seaborn, plotly, Tableau)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 80%;"></div>
+                            <div class="progress" style="width: 90%;"></div>
                         </div>
+                        <span class="skill-percent">90%</span>
                     </div>
                 </div>
 
@@ -590,24 +673,28 @@
                         <div class="progress-bar">
                             <div class="progress" style="width: 85%;"></div>
                         </div>
+                        <span class="skill-percent">85%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">NoSQL (Cassandra)</span>
                         <div class="progress-bar">
                             <div class="progress" style="width: 70%;"></div>
                         </div>
+                        <span class="skill-percent">70%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Data Science Datenbanken (Data Warehousing, Data Modeling)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 75%;"></div>
+                            <div class="progress" style="width: 90%;"></div>
                         </div>
+                        <span class="skill-percent">90%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Datenbankmanagement & Administration</span>
                         <div class="progress-bar">
                             <div class="progress" style="width: 80%;"></div>
                         </div>
+                        <span class="skill-percent">80%</span>
                     </div>
                 </div>
 
@@ -619,19 +706,22 @@
                         <div class="progress-bar">
                             <div class="progress" style="width: 90%;"></div>
                         </div>
+                        <span class="skill-percent">90%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">React.js (Frontend Framework)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 80%;"></div>
+                            <div class="progress" style="width: 85%;"></div>
                         </div>
+                        <span class="skill-percent">85%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Web-Technologien (REST APIs, JSON, Webserver-Konfiguration &
                             Hosting)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 75%;"></div>
+                            <div class="progress" style="width: 80%;"></div>
                         </div>
+                        <span class="skill-percent">80%</span>
                     </div>
                 </div>
 
@@ -639,34 +729,39 @@
                 <div class="skill-category">
                     <h3>Software Engineering & Development</h3>
                     <div class="skill-item">
-                        <span class="skill-name">Java, Python</span>
+                        <span class="skill-name">Java, Python, C, C#, C++</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 85%;"></div>
+                            <div class="progress" style="width: 98%;"></div>
                         </div>
+                        <span class="skill-percent">98%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Softwareentwicklung (OOP, SOLID-Prinzipien)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 85%;"></div>
+                            <div class="progress" style="width: 90%;"></div>
                         </div>
+                        <span class="skill-percent">90%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Algorithmen & Datenstrukturen</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 80%;"></div>
+                            <div class="progress" style="width: 89%;"></div>
                         </div>
+                        <span class="skill-percent">89%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Git & Versionskontrolle</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 90%;"></div>
+                            <div class="progress" style="width: 95%;"></div>
                         </div>
+                        <span class="skill-percent">95%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Human-Computer Interaction & UI/UX</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 75%;"></div>
+                            <div class="progress" style="width: 80%;"></div>
                         </div>
+                        <span class="skill-percent">80%</span>
                     </div>
                 </div>
 
@@ -678,18 +773,21 @@
                         <div class="progress-bar">
                             <div class="progress" style="width: 80%;"></div>
                         </div>
+                        <span class="skill-percent">80%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Lineare Algebra, Analysis</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 75%;"></div>
+                            <div class="progress" style="width: 80%;"></div>
                         </div>
+                        <span class="skill-percent">80%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Mathematik für Informatik & Data Science</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 85%;"></div>
+                            <div class="progress" style="width: 80%;"></div>
                         </div>
+                        <span class="skill-percent">80%</span>
                     </div>
                 </div>
 
@@ -699,26 +797,30 @@
                     <div class="skill-item">
                         <span class="skill-name">Rechnerstrukturen und Betriebssysteme (Linux, Windows, MacOS)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 80%;"></div>
+                            <div class="progress" style="width: 75%;"></div>
                         </div>
+                        <span class="skill-percent">75%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Kommunikation & Rechnernetze (TCP/IP, Netzwerkprotokolle)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 75%;"></div>
+                            <div class="progress" style="width: 85%;"></div>
                         </div>
+                        <span class="skill-percent">85%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Mobile Security & Informationssicherheit</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 70%;"></div>
+                            <div class="progress" style="width: 80%;"></div>
                         </div>
+                        <span class="skill-percent">80%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Theoretische Informatik & Logik</span>
                         <div class="progress-bar">
                             <div class="progress" style="width: 65%;"></div>
                         </div>
+                        <span class="skill-percent">65%</span>
                     </div>
                 </div>
 
@@ -728,145 +830,309 @@
                     <div class="skill-item">
                         <span class="skill-name">Betriebswirtschaftslehre (BWL Grundlagen)</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 70%;"></div>
+                            <div class="progress" style="width: 95%;"></div>
                         </div>
+                        <span class="skill-percent">95%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Informations- und Business Performance Management</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 75%;"></div>
+                            <div class="progress" style="width: 96%;"></div>
                         </div>
+                        <span class="skill-percent">96%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">Informatik und Gesellschaft, IT-Recht</span>
                         <div class="progress-bar">
-                            <div class="progress" style="width: 70%;"></div>
+                            <div class="progress" style="width: 80%;"></div>
                         </div>
+                        <span class="skill-percent">80%</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section (Timeline) -->
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 id="skills-header">Skills</h2>
+            <!-- Englische Version -->
+            <div id="skills-english" class="skills-content active">
+                <!-- Beispiel-Kategorie -->
+                <div class="skill-category">
+                    <h3>Data Science & Machine Learning</h3>
+                    <div class="skill-item">
+                        <span class="skill-percent">90%</span>
+                        <span class="skill-name">Python (numpy, pandas, matplotlib, seaborn, scikit-learn,
+                            TensorFlow)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-percent">80%</span>
+                        <span class="skill-name">R (Data Visualization, Statistical Analysis)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-percent">85%</span>
+                        <span class="skill-name">Applied Machine Learning & Deep Learning</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-percent">80%</span>
+                        <span class="skill-name">Data Visualization (matplotlib, seaborn, plotly, Tableau)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Weitere Kategorien (Englisch) können hier ergänzt werden -->
+            </div>
+            <!-- Deutsche Version -->
+            <div id="skills-german" class="skills-content">
+                <!-- Beispiel-Kategorie -->
+                <div class="skill-category">
+                    <h3>Data Science & Machine Learning</h3>
+                    <div class="skill-item">
+                        <span class="skill-percent">90%</span>
+                        <span class="skill-name">Python (numpy, pandas, matplotlib, seaborn, scikit-learn,
+                            TensorFlow)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-percent">80%</span>
+                        <span class="skill-name">R (Data Visualization, Statistische Analysen)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-percent">85%</span>
+                        <span class="skill-name">Angewandtes Machine Learning & Deep Learning</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-percent">80%</span>
+                        <span class="skill-name">Datenvisualisierung (matplotlib, seaborn, plotly, Tableau)</span>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Weitere Kategorien (Deutsch) können hier ergänzt werden -->
+            </div>
+        </section>
+
+        <!-- Experience Section mit zwei Timelines -->
         <section id="experience">
             <!-- Englische Version -->
             <div id="experience-english" class="experience-content active">
-                <h2 id="experience-header">Experience</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <h3>Ludwig-Uhland-Realschule / Lünen, Horstmar</h3>
-                        <p>08.2018 – 08.2021</p>
+                <h2 id="experience-header-en">Experience</h2>
+                <div class="experience-container">
+                    <!-- Bildung / Education (alte Timeline) -->
+                    <div class="experience-column">
+                        <h2>Education</h2>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h3>Ludwig-Uhland-Realschule / Lünen, Horstmar</h3>
+                                <p>08.2018 – 08.2021</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h3>Hellweg-Berufskolleg Unna / Unna</h3>
+                                <p>10.2021 – 10.2022</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h3>TU Dortmund / Dortmund</h3>
+                                <p>10.2022 – Present</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h3>FH Dortmund / Dortmund</h3>
+                                <p>Current</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="timeline-item">
-                        <h3>Hellweg-Berufskolleg Unna / Unna</h3>
-                        <p>10.2021 – 10.2022</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h3>TU Dortmund / Dortmund</h3>
-                        <p>10.2022 – Present</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h3>FH Dortmund / Dortmund</h3>
-                        <p>Current</p>
+                    <!-- Work / Internships (neue Timeline) -->
+                    <div class="experience-column">
+                        <h2>Work & Internships</h2>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h3>Entireinfra / Day Internship / Unna</h3>
+                                <p>IT</p>
+                                <p>07.06.2016</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h3>TyssenKrupp / Day Internship / Dortmund</h3>
+                                <p>System Integration</p>
+                                <p>07.06.2016</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h3>itemis AG / Internship / Lünen</h3>
+                                <p>Application Development</p>
+                                <p>06.02.2017 - 24.02.2017</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h3>w3logistics AG / Working Student / Dortmund</h3>
+                                <p>16.08.2023 - 31.12.2024</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h3>FH Dortmund / SHK Tutor / Dortmund</h3>
+                                <p>16.08.2023 - Present</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <!-- Deutsche Version -->
             <div id="experience-german" class="experience-content">
-                <h2 id="experience-header">Erfahrung</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <h3>Ludwig-Uhland-Realschule / Lünen, Horstmar</h3>
-                        <p>08.2018 – 08.2021</p>
+                <h2 id="experience-header-de">Erfahrung</h2>
+                <div class="experience-container">
+                    <!-- Bildung / Bildungswege (alte Timeline) -->
+                    <div class="experience-column">
+                        <h2>Bildungswege</h2>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h3>Ludwig-Uhland-Realschule / Lünen, Horstmar</h3>
+                                <p>08.2018 – 08.2021</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h3>Hellweg-Berufskolleg Unna / Unna</h3>
+                                <p>10.2021 – 10.2022</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h3>TU Dortmund / Dortmund</h3>
+                                <p>10.2022 – Jetzt</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h3>FH Dortmund / Dortmund</h3>
+                                <p>Aktuell</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="timeline-item">
-                        <h3>Hellweg-Berufskolleg Unna / Unna</h3>
-                        <p>10.2021 – 10.2022</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h3>TU Dortmund / Dortmund</h3>
-                        <p>10.2022 – Jetzt</p>
-                    </div>
-                    <div class="timeline-item">
-                        <h3>FH Dortmund / Dortmund</h3>
-                        <p>Aktuell</p>
+                    <!-- Praktika & Arbeitserfahrungen (neue Timeline) -->
+                    <div class="experience-column">
+                        <h2>Praktika & Arbeitserfahrungen</h2>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h3>Entireinfra / Tagespraktikum / Unna</h3>
+                                <p>Informationstechnik</p>
+                                <p>07.06.2016</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h3>TyssenKrupp / Tagespraktikum / Dortmund</h3>
+                                <p>Systemintegration</p>
+                                <p>07.06.2016</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h3>itemis AG / Praktikum / Lünen</h3>
+                                <p>Anwendungsentwicklung</p>
+                                <p>06.02.2017 - 24.02.2017</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h3>w3logistics AG / Werksstudent / Dortmund</h3>
+                                <p>16.08.2023 - 31.12.2024</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h3>FH Dortmund / SHK Tutor / Dortmund</h3>
+                                <p>16.08.2023 - Jetzt</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Module Section -->
+        <!-- Module Section with Toggle -->
         <section id="modules">
             <h2 id="modules-header">Modules</h2>
-            <!-- Englische Modulliste -->
+            <!-- Englische Version -->
             <div id="modules-english">
-                <ul>
+                <ul id="modules-visible-english">
                     <li>Introduction to Programming</li>
                     <li>Algorithms and Data Structures</li>
                     <li>Programming Course 1</li>
                     <li>Programming Course 2 DS</li>
                     <li>Computer Architecture and Operating Systems 1</li>
-                    <li>Computer Architecture and Operating Systems 2</li>
-                    <li>Software Engineering 1</li>
-                    <li>Database Management Systems 1</li>
-                    <li>Mathematics for IT Specialists 1</li>
-                    <li>Mathematics for IT Specialists 2</li>
-                    <li>Mathematics for IT Specialists 3</li>
-                    <li>Mathematics for IT Specialists 4 Data Science</li>
-                    <li>Theoretical Computer Science</li>
-                    <li>Human Computer Interaction</li>
-                    <li>Data Visualization</li>
-                    <li>Artificial Intelligence</li>
-                    <li>Applied Machine Learning</li>
-                    <li>Business Administration</li>
-                    <li>Technical English</li>
-                    <li>Study and Working Techniques</li>
-                    <li>Mentoring</li>
-                    <li>Software Engineering 2</li>
-                    <li>Web Technologies</li>
-                    <li>Communication and Computer Networks</li>
-                    <li>Data Science Databases</li>
-                    <li>Seminar - Content (Network Security)</li>
-                    <li>Computers and Society</li>
-                    <li>IT Law</li>
-                    <li>Mobile Security (Advanced Information Security)</li>
-                    <li>Information and Business Performance Management</li>
                 </ul>
+                <div id="modules-extra-english" class="modules-extra">
+                    <ul>
+                        <li>Computer Architecture and Operating Systems 2</li>
+                        <li>Software Engineering 1</li>
+                        <li>Database Management Systems 1</li>
+                        <li>Mathematics for IT Specialists 1</li>
+                        <li>Mathematics for IT Specialists 2</li>
+                        <li>Mathematics for IT Specialists 3</li>
+                        <li>Mathematics for IT Specialists 4 Data Science</li>
+                        <li>Theoretical Computer Science</li>
+                        <li>Human Computer Interaction</li>
+                        <li>Data Visualization</li>
+                        <li>Artificial Intelligence</li>
+                        <li>Applied Machine Learning</li>
+                        <li>Business Administration</li>
+                        <li>Technical English</li>
+                        <li>Study and Working Techniques</li>
+                        <li>Mentoring</li>
+                        <li>Software Engineering 2</li>
+                        <li>Web Technologies</li>
+                        <li>Communication and Computer Networks</li>
+                        <li>Data Science Databases</li>
+                        <li>Seminar - Content (Network Security)</li>
+                        <li>Computers and Society</li>
+                        <li>IT Law</li>
+                        <li>Mobile Security (Advanced Information Security)</li>
+                        <li>Information and Business Performance Management</li>
+                    </ul>
+                </div>
+                <button id="modules-toggle-english" class="modules-toggle" onclick="toggleModules('english')">Show
+                    more</button>
             </div>
-            <!-- Deutsche Modulliste -->
+            <!-- Deutsche Version -->
             <div id="modules-german" style="display: none;">
-                <ul>
+                <ul id="modules-visible-german">
                     <li>Einführung in die Programmierung</li>
                     <li>Algorithmen und Datenstrukturen</li>
                     <li>Programmierkurs 1</li>
                     <li>Programmierkurs 2 DS</li>
                     <li>Rechnerstrukturen und Betriebssysteme 1</li>
-                    <li>Rechnerstrukturen und Betriebssysteme 2</li>
-                    <li>Softwaretechnik 1</li>
-                    <li>Datenbanken 1</li>
-                    <li>Mathematik für Informatik 1</li>
-                    <li>Mathematik für Informatik 2</li>
-                    <li>Mathematik für Informatik 3</li>
-                    <li>Mathematik für Informatik 4 DS</li>
-                    <li>Theoretische Informatik</li>
-                    <li>Mensch-Computer-Interaktion</li>
-                    <li>Datenvisualisierung</li>
-                    <li>Künstliche Intelligenz</li>
-                    <li>Angewandtes Maschinelles Lernen</li>
-                    <li>Betriebswirtschaftslehre (BWL)</li>
-                    <li>Technisches Englisch</li>
-                    <li>Lern- und Arbeitstechniken</li>
-                    <li>Mentoring</li>
-                    <li>Softwaretechnik 2</li>
-                    <li>Web-Technologien</li>
-                    <li>Kommunikations- und Rechnernetze</li>
-                    <li>Data Science Datenbanken</li>
-                    <li>Seminar - Inhalt (Netzwerksicherheit)</li>
-                    <li>Informatik und Gesellschaft</li>
-                    <li>IT-Recht</li>
-                    <li>Fortgeschrittene Informationssicherheit</li>
-                    <li>Informations- und Business Performance Management</li>
                 </ul>
+                <div id="modules-extra-german" class="modules-extra">
+                    <ul>
+                        <li>Rechnerstrukturen und Betriebssysteme 2</li>
+                        <li>Softwaretechnik 1</li>
+                        <li>Datenbanken 1</li>
+                        <li>Mathematik für Informatik 1</li>
+                        <li>Mathematik für Informatik 2</li>
+                        <li>Mathematik für Informatik 3</li>
+                        <li>Mathematik für Informatik 4 DS</li>
+                        <li>Theoretische Informatik</li>
+                        <li>Mensch-Computer-Interaktion</li>
+                        <li>Datenvisualisierung</li>
+                        <li>Künstliche Intelligenz</li>
+                        <li>Angewandtes Maschinelles Lernen</li>
+                        <li>Betriebswirtschaftslehre (BWL)</li>
+                        <li>Technisches Englisch</li>
+                        <li>Lern- und Arbeitstechniken</li>
+                        <li>Mentoring</li>
+                        <li>Softwaretechnik 2</li>
+                        <li>Web-Technologien</li>
+                        <li>Kommunikations- und Rechnernetze</li>
+                        <li>Data Science Datenbanken</li>
+                        <li>Seminar - Inhalt (Netzwerksicherheit)</li>
+                        <li>Informatik und Gesellschaft</li>
+                        <li>IT-Recht</li>
+                        <li>Fortgeschrittene Informationssicherheit</li>
+                        <li>Informations- und Business Performance Management</li>
+                    </ul>
+                </div>
+                <button id="modules-toggle-german" class="modules-toggle" onclick="toggleModules('de')">Mehr
+                    anzeigen</button>
             </div>
         </section>
 
@@ -924,7 +1190,7 @@
                 document.getElementById('about-english').classList.remove('active');
                 document.getElementById('about-german').classList.add('active');
                 // Experience
-                document.getElementById('experience-header').textContent = 'Erfahrung';
+                document.getElementById('experience-header-de').textContent = 'Erfahrung';
                 document.getElementById('experience-english').classList.remove('active');
                 document.getElementById('experience-german').classList.add('active');
                 // Module
@@ -944,7 +1210,7 @@
                 document.getElementById('about-german').classList.remove('active');
                 document.getElementById('about-english').classList.add('active');
                 // Experience
-                document.getElementById('experience-header').textContent = 'Experience';
+                document.getElementById('experience-header-en').textContent = 'Experience';
                 document.getElementById('experience-german').classList.remove('active');
                 document.getElementById('experience-english').classList.add('active');
                 // Module
@@ -974,6 +1240,30 @@
             }
             updateActiveMarker();
         });
+
+        function toggleModules(language) {
+            if (language === 'de') {
+                const extra = document.getElementById('modules-extra-german');
+                const btn = document.getElementById('modules-toggle-german');
+                if (extra.classList.contains('expanded')) {
+                    extra.classList.remove('expanded');
+                    btn.textContent = 'Mehr anzeigen';
+                } else {
+                    extra.classList.add('expanded');
+                    btn.textContent = 'Weniger anzeigen';
+                }
+            } else {
+                const extra = document.getElementById('modules-extra-english');
+                const btn = document.getElementById('modules-toggle-english');
+                if (extra.classList.contains('expanded')) {
+                    extra.classList.remove('expanded');
+                    btn.textContent = 'Show more';
+                } else {
+                    extra.classList.add('expanded');
+                    btn.textContent = 'Show less';
+                }
+            }
+        }
 
         // Aktualisiert den aktiven Marker in der vertikalen Navigation basierend auf der Scrollposition
         function updateActiveMarker() {
