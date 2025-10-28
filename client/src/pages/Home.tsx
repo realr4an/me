@@ -161,6 +161,10 @@ const content = {
           items: ["Datenanalyse (pandas, numpy)", "Datenvisualisierung (matplotlib, seaborn, plotly)", "Statistische Analysen", "Data Warehousing & Modellierung"]
         },
         {
+          name: "Data Science Werkzeugen",
+          items: ["Power BI", "Tableau", "Jupyter Notebooks", "Apache Spark", "ETL-Prozesse"]
+        },
+        {
           name: "Backend & Datenbanken",
           items: ["Python, Java, C++", "SQL (MySQL, PostgreSQL, Oracle)", "NoSQL (Cassandra)", "API-Design & REST", "Datenbankadministration"]
         },
