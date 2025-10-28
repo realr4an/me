@@ -1,19 +1,23 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
+import { Route, Switch, Router as WouterRouter } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 
-function Router() {
+const basePath = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
+
+function AppRoutes() {
   return (
-    <Switch>
+    <WouterRouter base={basePath === "/" ? undefined : basePath}>
+      <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
-    </Switch>
+          </Switch>
+    </WouterRouter>
   );
 }
 
@@ -31,7 +35,7 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <AppRoutes />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
@@ -39,3 +43,4 @@ function App() {
 }
 
 export default App;
+
