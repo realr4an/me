@@ -111,7 +111,7 @@ const content = {
       items: [
         {
           name: "Investigation of Order Picking Systems by Design and Analysis of Computer Experiments",
-          description: "ENBIS 2024 conference presentation on using Generalized Additive Models for Location, Scale and Shape (GAMLSS) as meta-models to analyze discrete-event simulation experiments of order picking systems with uncertainty quantification.",
+          description: "ENBIS 2025 conference presentation on using Generalized Additive Models for Location, Scale and Shape (GAMLSS) as meta-models to analyze discrete-event simulation experiments of order picking systems with uncertainty quantification.",
           tags: ["Statistics", "Design of Experiments", "GAMLSS", "Simulation", "Logistics"],
           link: "https://conferences.enbis.org/event/63/contributions/948/"
         }
@@ -234,7 +234,7 @@ const content = {
       items: [
         {
           name: "Untersuchung von Kommissioniersystemen durch Versuchsplanung und Analyse von Computerexperimenten",
-          description: "ENBIS 2024 Konferenz-Präsentation über die Verwendung von verallgemeinerten additiven Modellen für Lage, Skala und Form (GAMLSS) als Meta-Modelle zur Analyse von Simulationsexperimenten von Lagerpickingsystemen mit Unsicherheitsquantifizierung.",
+          description: "ENBIS 2025 Konferenz-Präsentation über die Verwendung von verallgemeinerten additiven Modellen für Lage, Skala und Form (GAMLSS) als Meta-Modelle zur Analyse von Simulationsexperimenten von Lagerpickingsystemen mit Unsicherheitsquantifizierung.",
           tags: ["Statistik", "Versuchsplanung", "GAMLSS", "Simulation", "Logistik"],
           link: "https://conferences.enbis.org/event/63/contributions/948/"
         }
