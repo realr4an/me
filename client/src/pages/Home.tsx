@@ -386,7 +386,7 @@ export default function Home() {
               {t.about.title}
             </h1>
             <div className="mb-6">
-              <img src="/profile.png" alt="Duncan Scholle" className="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto object-cover border-4 border-blue-600 dark:border-cyan-400 shadow-lg" />
+              <img src={profileImageSrc} alt="Duncan Scholle" className="w-32 h-32 sm:w-40 sm:h-40 rounded-full mx-auto object-cover border-4 border-blue-600 dark:border-cyan-400 shadow-lg" />
             </div>
             <h2 className="text-2xl sm:text-3xl font-semibold text-slate-600 dark:text-slate-400 mb-6">
               {t.about.subtitlePrefix}<span className="text-blue-600 dark:text-cyan-400 font-bold">{subtitleText}</span><span className="animate-pulse">|</span>
@@ -596,3 +596,8 @@ export default function Home() {
 }
 
 
+const baseAssetPath =
+  (import.meta.env.BASE_URL ?? "/").endsWith("/")
+    ? import.meta.env.BASE_URL ?? "/"
+    : `${import.meta.env.BASE_URL}/`;
+const profileImageSrc = `${baseAssetPath}profile.png`;
