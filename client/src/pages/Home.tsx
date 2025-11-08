@@ -93,6 +93,12 @@ const content = {
           link: "https://github.com/realr4an/SecureTextEditor"
         },
         {
+          name: "Ollama Redis RAG Stack",
+          description: "Containerized RAG stack that combines Ollama, Redis Stack, and FastAPI services for local retrieval workflows.",
+          tags: ["Ollama", "Redis Stack", "RAG", "Docker", "FastAPI"],
+          link: "https://github.com/realr4an/ollama-redis-rag-stack"
+        },
+        {
           name: "LeagueOfLegendsMinimapTracker",
           description: "Automated minimap tracking system that enhances map awareness in League of Legends.",
           tags: ["Python", "Computer Vision", "OpenCV", "Gaming"],
@@ -214,6 +220,12 @@ const content = {
           description: "Sicherer Texteditor mit React-Frontend, Spring-Boot-Backend und integrierter Verschlüsselung.",
           tags: ["React", "Spring Boot", "Java", "Sicherheit", "Full-Stack"],
           link: "https://github.com/realr4an/SecureTextEditor"
+        },
+        {
+          name: "Ollama Redis RAG Stack",
+          description: "Containerisierter RAG-Stack mit Ollama, Redis Stack und FastAPI-Orchestrierung für lokale LLM-Retrieval-Workflows.",
+          tags: ["Ollama", "Redis Stack", "RAG", "Docker", "FastAPI"],
+          link: "https://github.com/realr4an/ollama-redis-rag-stack"
         },
         {
           name: "LeagueOfLegendsMinimapTracker",
