@@ -5,6 +5,12 @@ import { APP_TITLE } from "@/const";
 
 type Language = "en" | "de";
 
+const baseAssetPath =
+  (import.meta.env.BASE_URL ?? "/").endsWith("/")
+    ? import.meta.env.BASE_URL ?? "/"
+    : `${import.meta.env.BASE_URL}/`;
+const profileImageSrc = `${baseAssetPath}profile.png`;
+
 const content = {
   en: {
     nav: { about: "About", skills: "Skills", experience: "Experience", projects: "Projects", publications: "Publications", modules: "Modules" },
@@ -132,7 +138,7 @@ const content = {
       contact: "Get in Touch",
       email: "duncanscholle@outlook.com",
       cv: "Download CV",
-      cvLink: "https://realr4an.github.io/me/cv.pdf"
+      cvLink: `${baseAssetPath}cv.pdf`
     }
   },
   de: {
@@ -261,7 +267,7 @@ const content = {
       contact: "Kontakt aufnehmen",
       email: "duncanscholle@outlook.com",
       cv: "CV herunterladen",
-      cvLink: "https://realr4an.github.io/me/cv.pdf"
+      cvLink: `${baseAssetPath}cv.pdf`
     }
   }
 };
@@ -416,7 +422,7 @@ export default function Home() {
               <a href="https://github.com/realr4an" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 rounded-lg font-medium transition-colors">
                 <Github size={20} /> GitHub
               </a>
-              <a href="https://www.linkedin.com/in/duncanscholle" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 rounded-lg font-medium transition-colors">
+              <a href="https://www.linkedin.com/in/duncan-scholle-21549731a/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 rounded-lg font-medium transition-colors">
                 <Linkedin size={20} /> LinkedIn
               </a>
             </div>
@@ -599,17 +605,10 @@ export default function Home() {
           <div className="flex justify-center gap-6">
             <a href="mailto:duncanscholle@outlook.com" className="hover:text-slate-200 transition-colors">Email</a>
             <a href="https://github.com/realr4an" target="_blank" rel="noopener noreferrer" className="hover:text-slate-200 transition-colors">GitHub</a>
-            <a href="https://www.linkedin.com/in/duncanscholle" target="_blank" rel="noopener noreferrer" className="hover:text-slate-200 transition-colors">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/duncan-scholle-21549731a/" target="_blank" rel="noopener noreferrer" className="hover:text-slate-200 transition-colors">LinkedIn</a>
           </div>
         </div>
       </footer>
     </div>
   );
 }
-
-
-const baseAssetPath =
-  (import.meta.env.BASE_URL ?? "/").endsWith("/")
-    ? import.meta.env.BASE_URL ?? "/"
-    : `${import.meta.env.BASE_URL}/`;
-const profileImageSrc = `${baseAssetPath}profile.png`;
