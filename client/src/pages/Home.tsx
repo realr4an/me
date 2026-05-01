@@ -29,7 +29,7 @@ const content = {
         "always learning & evolving",
         "thinking in algorithms & models"
       ],
-      description: "Passionate about building intelligent systems and solving complex problems with machine learning and software engineering.",
+      description: "Data and machine learning engineer with a focus on reproducible ML workflows, production-oriented backend systems, and applied AI products.",
       cta: "Get in Touch"
     },
     skills: {
@@ -86,6 +86,17 @@ const content = {
     projects: {
       title: "Projects",
       items: [
+        {
+          name: "GenImage Detection Extension (GIDE)",
+          description: "Bachelor's thesis project on detecting AI-generated images in the browser, spanning reproducible data generation, compact model training, and ONNX inference inside a Manifest V3 extension.",
+          tags: ["Bachelor's Thesis", "Python", "PyTorch", "ONNX Runtime Web", "Browser Extension", "Docker"],
+        },
+        {
+          name: "CineScope",
+          description: "Production-oriented movie and series explorer built with Next.js, TMDB, Supabase, and OpenRouter, including watchlists, age-gating, streaming-provider availability, and AI-assisted discovery.",
+          tags: ["Next.js", "TypeScript", "Supabase", "OpenRouter", "TMDB", "Full-Stack"],
+          link: "https://github.com/realr4an/CineScope"
+        },
         {
           name: "AI-Image-Detector",
           description: "YOLO and TensorFlow pipeline that detects and flags AI-generated faces with Streamlit dashboards.",
@@ -158,7 +169,7 @@ const content = {
         "ständig am Lernen & Wachsen",
         "denke in Algorithmen & Modellen"
       ],
-      description: "Leidenschaftlich daran interessiert, intelligente Systeme zu entwickeln und komplexe Probleme mit Machine Learning und Softwareentwicklung zu lösen.",
+      description: "Data- und Machine-Learning-Engineer mit Fokus auf reproduzierbare ML-Workflows, produktionsnahe Backend-Systeme und angewandte KI-Produkte.",
       cta: "Kontakt aufnehmen"
     },
     skills: {
@@ -215,6 +226,17 @@ const content = {
     projects: {
       title: "Projekte",
       items: [
+        {
+          name: "GenImage Detection Extension (GIDE)",
+          description: "Bachelorarbeitsprojekt zur Erkennung KI-generierter Bilder im Browser, von reproduzierbarer Datengenerierung über kompaktes Modelltraining bis zu ONNX-Inferenz in einer Manifest-V3-Extension.",
+          tags: ["Bachelorarbeit", "Python", "PyTorch", "ONNX Runtime Web", "Browser Extension", "Docker"],
+        },
+        {
+          name: "CineScope",
+          description: "Produktionsnahe Film- und Serien-Explorer-App mit Next.js, TMDB, Supabase und OpenRouter inklusive Watchlist, Altersfilter, Streaming-Verfügbarkeit und KI-gestützter Discovery.",
+          tags: ["Next.js", "TypeScript", "Supabase", "OpenRouter", "TMDB", "Full-Stack"],
+          link: "https://github.com/realr4an/CineScope"
+        },
         {
           name: "AI-Image-Detector",
           description: "YOLO- und TensorFlow-Pipeline zur Erkennung von KI-generierten Gesichtern mit Streamlit-Dashboards.",
@@ -497,30 +519,51 @@ export default function Home() {
               {t.projects.title}
             </h2>
             <div className="grid md:grid-cols-1 gap-6">
-              {t.projects.items.map((project, idx) => (
-                <a
-                  key={idx}
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group bg-slate-50 dark:bg-slate-900 p-6 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-blue-600 dark:hover:border-cyan-400 transition-all hover:shadow-lg"
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
-                      {project.name}
-                    </h3>
-                    <ExternalLink size={20} className="text-slate-400 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors" />
-                  </div>
-                  <p className="text-slate-600 dark:text-slate-400 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag, i) => (
-                      <span key={i} className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </a>
-              ))}
+              {t.projects.items.map((project, idx) => {
+                const cardClasses =
+                  "group bg-slate-50 dark:bg-slate-900 p-6 rounded-lg border border-slate-200 dark:border-slate-700 transition-all hover:shadow-lg";
+
+                const content = (
+                  <>
+                    <div className="flex items-start justify-between mb-3">
+                      <h3 className="text-xl font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
+                        {project.name}
+                      </h3>
+                      {project.link && (
+                        <ExternalLink size={20} className="text-slate-400 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors" />
+                      )}
+                    </div>
+                    <p className="text-slate-600 dark:text-slate-400 mb-4">{project.description}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag, i) => (
+                        <span key={i} className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </>
+                );
+
+                if (!project.link) {
+                  return (
+                    <div key={idx} className={cardClasses}>
+                      {content}
+                    </div>
+                  );
+                }
+
+                return (
+                  <a
+                    key={idx}
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${cardClasses} hover:border-blue-600 dark:hover:border-cyan-400`}
+                  >
+                    {content}
+                  </a>
+                );
+              })}
             </div>
           </div>
         </section>
