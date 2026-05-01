@@ -90,6 +90,7 @@ const content = {
           name: "GenImage Detection Extension (GIDE)",
           description: "Bachelor's thesis project on detecting AI-generated images in the browser, spanning reproducible data generation, compact model training, and ONNX inference inside a Manifest V3 extension.",
           tags: ["Bachelor's Thesis", "Python", "PyTorch", "ONNX Runtime Web", "Browser Extension", "Docker"],
+          link: "https://github.com/realr4an/GIDE"
         },
         {
           name: "CineScope",
@@ -230,6 +231,7 @@ const content = {
           name: "GenImage Detection Extension (GIDE)",
           description: "Bachelorarbeitsprojekt zur Erkennung KI-generierter Bilder im Browser, von reproduzierbarer Datengenerierung über kompaktes Modelltraining bis zu ONNX-Inferenz in einer Manifest-V3-Extension.",
           tags: ["Bachelorarbeit", "Python", "PyTorch", "ONNX Runtime Web", "Browser Extension", "Docker"],
+          link: "https://github.com/realr4an/GIDE"
         },
         {
           name: "CineScope",
