@@ -18,7 +18,7 @@ const content = {
       title: "Duncan Scholle",
       subtitlePrefix: "I'm ",
       subtitlePhrases: [
-        "an AI Engineer",
+        "a Junior AI Solution Consultant",
         "passionate about machine learning",
         "skilled in Python & TensorFlow",
         "curious about deep learning",
@@ -29,7 +29,7 @@ const content = {
         "always learning & evolving",
         "thinking in algorithms & models"
       ],
-      description: "Data and machine learning engineer with a focus on reproducible ML workflows, production-oriented backend systems, and applied AI products.",
+      description: "Junior AI Solution Consultant at EPC Ehrhardt + Partner Consulting GmbH and Data Science graduate, focused on applied AI, reproducible ML workflows, and production-oriented software solutions.",
       cta: "Get in Touch"
     },
     skills: {
@@ -66,7 +66,7 @@ const content = {
       education: {
         title: "Education",
         items: [
-          { name: "FH Dortmund", period: "10.2022 - Present", description: "Computer Science (B.Sc.) - Data Science Specialization" },
+          { name: "FH Dortmund", period: "10.2022 - 2026", description: "Completed B.Sc. in Computer Science with a Data Science specialization" },
           { name: "TU Dortmund", period: "10.2021 - 09.2022", description: "Computer Science" },
           { name: "Hellweg-Berufskolleg Unna", period: "08.2018 - 08.2021", description: "IT Specialization" },
           { name: "Ludwig-Uhland-Realschule", period: "08.2012 - 08.2018", description: "Secondary Education" }
@@ -75,7 +75,8 @@ const content = {
       work: {
         title: "Work & Internships",
         items: [
-          { name: "FH Dortmund - SHK Tutor", period: "01.2025 - Present", description: "Active participation in research projects in cooperation with other universities. Focus on statistical models for logistics optimization and development of simulation models for decision support." },
+          { name: "EPC Ehrhardt + Partner Consulting GmbH, Junior AI Solution Consultant", period: "2026 - Present", description: "Consulting on and implementing practical AI solutions for business processes as part of the consulting division of EPG." },
+          { name: "FH Dortmund, Research Assistant", period: "01.2025 - 2026", description: "Participated in research projects with other universities, focusing on statistical models for logistics optimization and simulation models for decision support." },
           { name: "w3logistics AG - Working Student", period: "08.2023 - 12.2024", description: "Warehouse Management System (WMS) development and maintenance. Responsible for system enhancements, unit testing, error analysis, and direct customer coordination. Strong experience in Java, C#, C++, SQL, and JavaScript." },
           { name: "itemis AG - Internship", period: "02.2017 - 02.2017", description: "Application Development" },
           { name: "TyssenKrupp - Day Internship", period: "03.2016", description: "System Integration" },
@@ -159,7 +160,7 @@ const content = {
       title: "Duncan Scholle",
       subtitlePrefix: "Ich bin ",
       subtitlePhrases: [
-        "ein AI Engineer",
+        "Junior AI Solution Consultant",
         "begeistert von Machine Learning",
         "versiert in Python & TensorFlow",
         "interessiert an Deep Learning",
@@ -170,7 +171,7 @@ const content = {
         "ständig am Lernen & Wachsen",
         "denke in Algorithmen & Modellen"
       ],
-      description: "Data- und Machine-Learning-Engineer mit Fokus auf reproduzierbare ML-Workflows, produktionsnahe Backend-Systeme und angewandte KI-Produkte.",
+      description: "Junior AI Solution Consultant bei der EPC Ehrhardt + Partner Consulting GmbH und Data-Science-Absolvent mit Fokus auf angewandte KI, reproduzierbare ML-Workflows und produktionsnahe Softwarelösungen.",
       cta: "Kontakt aufnehmen"
     },
     skills: {
@@ -207,7 +208,7 @@ const content = {
       education: {
         title: "Bildung",
         items: [
-          { name: "FH Dortmund", period: "10.2022 - Jetzt", description: "Informatik (B.Sc.) - Schwerpunkt Data Science" },
+          { name: "FH Dortmund", period: "10.2022 - 2026", description: "Abgeschlossener B.Sc. Informatik mit Schwerpunkt Data Science" },
           { name: "TU Dortmund", period: "10.2021 - 09.2022", description: "Informatik" },
           { name: "Hellweg-Berufskolleg Unna", period: "08.2018 - 08.2021", description: "IT-Spezialisierung" },
           { name: "Ludwig-Uhland-Realschule", period: "08.2012 - 08.2018", description: "Sekundarbildung" }
@@ -216,7 +217,8 @@ const content = {
       work: {
         title: "Praktika & Arbeitserfahrung",
         items: [
-          { name: "FH Dortmund - SHK Tutor", period: "01.2025 - Jetzt", description: "Aktive Mitarbeit an Forschungsprojekten in Kooperation mit anderen Universitäten. Fokus auf statistische Modelle zur Optimierung von Logistik-Teilen und Entwicklung von Simulationsmodellen zur Entscheidungsunterstützung." },
+          { name: "EPC Ehrhardt + Partner Consulting GmbH, Junior AI Solution Consultant", period: "2026 - Heute", description: "Beratung und Umsetzung praxisnaher KI-Lösungen für Geschäftsprozesse im Consulting-Zweig der EPG." },
+          { name: "FH Dortmund, Wissenschaftliche Hilfskraft", period: "01.2025 - 2026", description: "Mitarbeit an Forschungsprojekten mit anderen Universitäten mit Fokus auf statistische Modelle zur Logistikoptimierung und Simulationsmodelle zur Entscheidungsunterstützung." },
           { name: "w3logistics AG - Werkstudent", period: "08.2023 - 12.2024", description: "Warehouse Management System (WMS) Weiterentwicklung und Wartung. Verantwortlich für Systemverbesserungen, Unit-Tests, Fehleranalyse und direkte Kundenabstimmung. Starke Erfahrung in Java, C#, C++, SQL und JavaScript." },
           { name: "itemis AG - Praktikum", period: "02.2017 - 02.2017", description: "Anwendungsentwicklung" },
           { name: "TyssenKrupp - Tagespraktikum", period: "03.2016", description: "Systemintegration" },
@@ -646,7 +648,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-slate-900 dark:bg-slate-950 text-slate-400 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="mb-4">© 2025 Duncan Scholle. All rights reserved.</p>
+          <p className="mb-4">© 2026 Duncan Scholle. All rights reserved.</p>
           <div className="flex justify-center gap-6">
             <a href="mailto:duncanscholle@outlook.com" className="hover:text-slate-200 transition-colors">Email</a>
             <a href="https://github.com/realr4an" target="_blank" rel="noopener noreferrer" className="hover:text-slate-200 transition-colors">GitHub</a>
