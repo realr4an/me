@@ -75,8 +75,8 @@ const content = {
       work: {
         title: "Work & Internships",
         items: [
-          { name: "EPC Ehrhardt + Partner Consulting GmbH, Junior AI Solution Consultant", period: "2026 - Present", description: "Consulting on and implementing practical AI solutions for business processes as part of the consulting division of EPG." },
-          { name: "FH Dortmund, Research Assistant", period: "01.2025 - 2026", description: "Participated in research projects with other universities, focusing on statistical models for logistics optimization and simulation models for decision support." },
+          { name: "EPC Ehrhardt + Partner Consulting GmbH, Junior AI Solution Consultant", period: "Since 01.06.2026", description: "Consulting on and implementing practical AI solutions for business processes as part of the consulting division of EPG." },
+          { name: "FH Dortmund, Research Assistant", period: "01.2025 - 05.2026", description: "Participated in research projects with other universities, focusing on statistical models for logistics optimization and simulation models for decision support." },
           { name: "w3logistics AG - Working Student", period: "08.2023 - 12.2024", description: "Warehouse Management System (WMS) development and maintenance. Responsible for system enhancements, unit testing, error analysis, and direct customer coordination. Strong experience in Java, C#, C++, SQL, and JavaScript." },
           { name: "itemis AG - Internship", period: "02.2017 - 02.2017", description: "Application Development" },
           { name: "TyssenKrupp - Day Internship", period: "03.2016", description: "System Integration" },
@@ -217,8 +217,8 @@ const content = {
       work: {
         title: "Praktika & Arbeitserfahrung",
         items: [
-          { name: "EPC Ehrhardt + Partner Consulting GmbH, Junior AI Solution Consultant", period: "2026 - Heute", description: "Beratung und Umsetzung praxisnaher KI-Lösungen für Geschäftsprozesse im Consulting-Zweig der EPG." },
-          { name: "FH Dortmund, Wissenschaftliche Hilfskraft", period: "01.2025 - 2026", description: "Mitarbeit an Forschungsprojekten mit anderen Universitäten mit Fokus auf statistische Modelle zur Logistikoptimierung und Simulationsmodelle zur Entscheidungsunterstützung." },
+          { name: "EPC Ehrhardt + Partner Consulting GmbH, Junior AI Solution Consultant", period: "Seit 01.06.2026", description: "Beratung und Umsetzung praxisnaher KI-Lösungen für Geschäftsprozesse im Consulting-Zweig der EPG." },
+          { name: "FH Dortmund, Wissenschaftliche Hilfskraft", period: "01.2025 - 05.2026", description: "Mitarbeit an Forschungsprojekten mit anderen Universitäten mit Fokus auf statistische Modelle zur Logistikoptimierung und Simulationsmodelle zur Entscheidungsunterstützung." },
           { name: "w3logistics AG - Werkstudent", period: "08.2023 - 12.2024", description: "Warehouse Management System (WMS) Weiterentwicklung und Wartung. Verantwortlich für Systemverbesserungen, Unit-Tests, Fehleranalyse und direkte Kundenabstimmung. Starke Erfahrung in Java, C#, C++, SQL und JavaScript." },
           { name: "itemis AG - Praktikum", period: "02.2017 - 02.2017", description: "Anwendungsentwicklung" },
           { name: "TyssenKrupp - Tagespraktikum", period: "03.2016", description: "Systemintegration" },
